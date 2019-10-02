@@ -11,6 +11,7 @@ type User struct {
 		Uploaded      int64   `json:"uploaded"`
 		Downloaded    int64   `json:"downloaded"`
 		Ratio         string  `json:"ratio"`
+		Buffer        int64   `json:"buffer"`
 		RequiredRatio float64 `json:"requiredRatio"`
 	} `json:"stats"`
 	Ranks struct {
@@ -33,18 +34,25 @@ type User struct {
 		PassKey      string `json:"passKey"`
 	} `json:"personal"`
 	Community struct {
-		Posts           int `json:"posts"`
-		TorrentComments int `json:"torrentComments"`
-		CollagesStarted int `json:"collagesStarted"`
-		CollagesContrib int `json:"collagesContrib"`
-		RequestsFilled  int `json:"requestsFilled"`
-		RequestsVoted   int `json:"requestsVoted"`
-		PerfectFlacs    int `json:"perfectFlacs"`
-		Uploaded        int `json:"uploaded"`
-		Groups          int `json:"groups"`
-		Seeding         int `json:"seeding"`
-		Leeching        int `json:"leeching"`
-		Snatched        int `json:"snatched"`
-		Invited         int `json:"invited"`
+		Posts           int         `json:"posts"`
+		GroupVotes      int         `json:"groupVotes"`
+		TorrentComments int         `json:"torrentComments"`
+		ArtistComments  int         `json:"artistComments"`
+		CollageComments int         `json:"collageComments"`
+		RequestComments int         `json:"requestComments"`
+		CollagesStarted int         `json:"collagesStarted"`
+		CollagesContrib int         `json:"collagesContrib"`
+		RequestsFilled  int         `json:"requestsFilled"`
+		BountyEarned    interface{} `json:"bountyEarned"`
+		RequestsVoted   int         `json:"requestsVoted"`
+		BountySpent     int64       `json:"bountySpent"`
+		PerfectFlacs    int         `json:"perfectFlacs"`
+		Uploaded        int         `json:"uploaded"`
+		Groups          int         `json:"groups"`
+		Seeding         int         `json:"seeding"`
+		Leeching        int         `json:"leeching"`
+		Snatched        int         `json:"snatched"`
+		Invited         int         `json:"invited"`
+		ArtistsAdded    int         `json:"artistsAdded"`
 	} `json:"community"`
 }

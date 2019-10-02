@@ -121,6 +121,20 @@ func (w *WhatAPI) GetAccount() (Account, error) {
 	return account.Response, checkResponseStatus(account.Status, account.Error)
 }
 
+//GetProfile retrieves account information for the current user.
+func (w *WhatAPI) GetProfile(params url.Values) (User, error) {
+	user := UserResponse{}
+	requestURL, err := buildURL(w.baseURL, "ajax.php", "user", params)
+	if err != nil {
+		return user.Response, err
+	}
+	err = w.GetJSON(requestURL, &user)
+	if err != nil {
+		return user.Response, err
+	}
+	return user.Response, checkResponseStatus(user.Status, user.Error)
+}
+
 //GetMailbox retrieves mailbox information for the current user using the provided parameters.
 func (w *WhatAPI) GetMailbox(params url.Values) (Mailbox, error) {
 	mailbox := MailboxResponse{}
